@@ -30,16 +30,18 @@ app.use(session({
 }));
 app.use(require('./middleware/add-user-to-locals-and-req'));
 
-// **Add your landing page route here**
+// Landing page route (#2)
 app.get('/', (req, res) => {
   res.render('home.ejs', { title: 'Home Page' });
 });
 
-// Other routes
-app.use('/auth', require('./controllers/auth'));
-app.use('/movies', require('./controllers/movie')); // Movies controller
+// Movies controller (#4)
+app.use('/movies', require('./controllers/movie'));
 
-// Ensure all routes below require authentication
+// Authentication routes
+app.use('/auth', require('./controllers/auth'));
+
+// Restrict access to routes below this middleware
 app.use(require('./middleware/ensure-signed-in'));
 
 // Start the server
