@@ -1,3 +1,5 @@
+console.log(__dirname); // Add this at the top of add-user-to-locals-and-req.js
+
 const User = require('../models/user');
 
 module.exports = async function (req, res, next) {

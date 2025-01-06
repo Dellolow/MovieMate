@@ -1,76 +1,43 @@
 const express = require("express");
 const router = express.Router();
-const ensureSignedIn = require("../middleware/ensure-signed-in");
 const Movie = require("../models/movie");
+const ensureSignedIn = require("../middleware/ensure-signed-in");
 
-// GET /movies (Index: Show all movies for the logged-in user)
+// GET /movies (Show all movies for a signed-in user)
 router.get("/", ensureSignedIn, async (req, res) => {
   try {
     const movies = await Movie.find({ user: req.user._id });
-    res.render("movies/index.ejs", { title: "My Movies", movies });
-  } catch (e) {
-    console.error(e);
+    res.render("movies/index.ejs", { title: "Your Movies", movies });
+  } catch (err) {
+    console.error(err);
     res.redirect("/");
   }
 });
 
-// GET /movies/new (Show form to add a new movie)
+// GET /movies/new (Render form to add a new movie)
 router.get("/new", ensureSignedIn, (req, res) => {
-  res.render("movies/new.ejs", { title: "Add Movie" });
+  res.render("movies/new.ejs", { title: "Add New Movie" });
 });
 
-// POST /movies (Create a new movie)
+// POST /movies (Add a new movie to the database)
 router.post("/", ensureSignedIn, async (req, res) => {
   try {
-    req.body.user = req.user._id; // Associate the movie with the logged-in user
-    await Movie.create(req.body);
+    const newMovie = { ...req.body, user: req.user._id };
+    await Movie.create(newMovie);
     res.redirect("/movies");
-  } catch (e) {
-    console.error(e);
-    res.redirect("/movies/new");
-  }
-});
-
-// GET /movies/:id/edit (Show form to edit a movie)
-router.get("/:id/edit", ensureSignedIn, async (req, res) => {
-  try {
-    const movie = await Movie.findById(req.params.id);
-    if (!movie || movie.user.toString() !== req.user._id.toString()) {
-      return res.redirect("/movies");
-    }
-    res.render("movies/edit.ejs", { title: "Edit Movie", movie });
-  } catch (e) {
-    console.error(e);
+  } catch (err) {
+    console.error(err);
     res.redirect("/movies");
   }
 });
 
-// PUT /movies/:id (Update movie details)
-router.put("/:id", ensureSignedIn, async (req, res) => {
-  try {
-    const movie = await Movie.findById(req.params.id);
-    if (!movie || movie.user.toString() !== req.user._id.toString()) {
-      return res.redirect("/movies");
-    }
-    await Movie.findByIdAndUpdate(req.params.id, req.body);
-    res.redirect("/movies");
-  } catch (e) {
-    console.error(e);
-    res.redirect("/movies");
-  }
-});
-
-// DELETE /movies/:id (Delete a movie)
+// DELETE /movies/:id (Remove a movie)
 router.delete("/:id", ensureSignedIn, async (req, res) => {
   try {
-    const movie = await Movie.findById(req.params.id);
-    if (!movie || movie.user.toString() !== req.user._id.toString()) {
-      return res.redirect("/movies");
-    }
     await Movie.findByIdAndDelete(req.params.id);
     res.redirect("/movies");
-  } catch (e) {
-    console.error(e);
+  } catch (err) {
+    console.error(err);
     res.redirect("/movies");
   }
 });

@@ -1,3 +1,23 @@
-<%- include('./partials/header.ejs') %>
-<!-- Home Page's Content -->
-<%- include('./partials/footer.ejs') %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MovieMate</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Welcome to MovieMate</h1>
+    <p>Your personal movie watchlist tracker</p>
+    <nav>
+      <ul>
+        <li><a href="/movies">View Movies</a></li>
+        <li><a href="/movies/new">Add a Movie</a></li>
+        <li><a href="/auth/sign-in">Sign In</a></li>
+        <li><a href="/auth/sign-up">Sign Up</a></li>
+      </ul>
+    </nav>
+  </header>
+</body>
+</html>
