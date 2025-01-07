@@ -22,7 +22,7 @@ router.get("/new", ensureSignedIn, (req, res) => {
 // POST /movies (Add a new movie to the database)
 router.post("/", ensureSignedIn, async (req, res) => {
   try {
-    const newMovie = { ...req.body, user: req.user._id };
+    const newMovie = { ...req.body, user: req.user._id, watched: !!req.body.watched};
     await Movie.create(newMovie);
     res.redirect("/movies");
   } catch (err) {

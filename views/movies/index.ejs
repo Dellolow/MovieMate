@@ -1,29 +1,32 @@
 <%- include('../partials/header.ejs') %>
-<div class="movies-container">
+<div class="movie-index">
+<div class="movie-container">
   <h2>Watched Movies</h2>
   <ul>
     <% movies.filter(movie => movie.watched).forEach(movie => { %>
       <li>
         <strong><%= movie.title %></strong> (<%= movie.releaseYear %>) - <%= movie.genre %>
         <a href="/movies/<%= movie._id %>/edit">Edit</a>
-        <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
-          <button type="submit">Delete</button>
+        <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+            <button type="submit">Delete</button>
         </form>
-      </li>
+    </li>
     <% }) %>
-  </ul>
-  
-  <h2>Unwatched Movies</h2>
-  <ul>
-    <% movies.filter(movie => !movie.watched).forEach(movie => { %>
-      <li>
-        <strong><%= movie.title %></strong> (<%= movie.releaseYear %>) - <%= movie.genre %>
-        <a href="/movies/<%= movie._id %>/edit">Edit</a>
-        <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST" style="display:inline;">
-          <button type="submit">Delete</button>
-        </form>
+</ul>
+</div>
+<div class="movie-container">
+<h2>Unwatched Movies</h2>
+<ul>
+      <% movies.filter(movie => !movie.watched).forEach(movie => { %>
+        <li>
+            <strong><%= movie.title %></strong> (<%= movie.releaseYear %>) - <%= movie.genre %>
+            <a href="/movies/<%= movie._id %>/edit">Edit</a>
+            <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+                <button type="submit">Delete</button>
+            </form>
       </li>
-    <% }) %>
-  </ul>
+      <% }) %>
+    </ul>
+</div>
 </div>
 <%- include('../partials/footer.ejs') %>
