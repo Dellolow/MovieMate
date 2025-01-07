@@ -85,3 +85,16 @@ button:hover {
   justify-content: center;
   gap: 2rem;
 }
+
+article {
+  border: 0.2rem solid gray;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  width: 10rem;
+  max-width: 10rem;
+}
+
+main {
+  overflow-y: auto;
+}

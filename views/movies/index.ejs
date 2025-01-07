@@ -2,31 +2,27 @@
 <div class="movie-index">
 <div class="movie-container">
   <h2>Watched Movies</h2>
-  <ul>
     <% movies.filter(movie => movie.watched).forEach(movie => { %>
-      <li>
+      <article>
         <strong><%= movie.title %></strong> (<%= movie.releaseYear %>) - <%= movie.genre %>
         <a href="/movies/<%= movie._id %>/edit">Edit</a>
         <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
             <button type="submit">Delete</button>
         </form>
-    </li>
+      </article>
     <% }) %>
-</ul>
 </div>
 <div class="movie-container">
 <h2>Unwatched Movies</h2>
-<ul>
       <% movies.filter(movie => !movie.watched).forEach(movie => { %>
-        <li>
+        <article>
             <strong><%= movie.title %></strong> (<%= movie.releaseYear %>) - <%= movie.genre %>
             <a href="/movies/<%= movie._id %>/edit">Edit</a>
             <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
                 <button type="submit">Delete</button>
             </form>
-      </li>
+        </article>
       <% }) %>
-    </ul>
 </div>
 </div>
 <%- include('../partials/footer.ejs') %>
