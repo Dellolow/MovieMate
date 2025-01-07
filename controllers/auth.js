@@ -8,7 +8,7 @@ const router = express.Router();
 
 // GET /auth/sign-up (see the sign-up form - new functionality for the users data resource)
 router.get('/sign-up', (req, res) => {
-  res.render('auth/sign-up.ejs', { title: 'Sign Up!' })
+  res.render('auth/sign-up.ejs', { title: 'Sign Up!', error: '' })
 });
 
 // GET /auth/sign-out
@@ -28,13 +28,13 @@ router.post('/sign-up', async (req, res) => {
     res.redirect('/');
   } catch (e) {
     console.log(e);
-    res.render('auth/sign-up.ejs', { title: 'Sign Up!' });
+    res.render('auth/sign-up.ejs', { title: 'Sign Up!' , error: e.message});
   }
 });
 
 // GET /auth/sign-in (show the sign-in page)
 router.get('/sign-in', (req, res) => {
-  res.render('auth/sign-in.ejs', { title: 'Sign In' });
+  res.render('auth/sign-in.ejs', { title: 'Sign In', error: '' });
 });
 
 // POST /auth/sign-in (sign in a user)
@@ -46,13 +46,14 @@ router.post('/sign-in', async (req, res) => {
     const valid = bcrypt.compareSync(req.body.password, user.password);
     if (!valid) throw new Error('Invalid password');
     req.session.user_id = user._id;
-    // Update path to the functionality YOU want
+    // Update path to the functionality I want
     res.redirect('/');
   } catch (e) {
     console.log(e);
-    res.render('auth/sign-in.ejs', { title: 'Sign In' });
+    res.render('auth/sign-in.ejs', { title: 'Sign In!', error: e.message });
   }
 });
+
 
 
 module.exports = router;

@@ -32,11 +32,11 @@ app.use(require('./middleware/add-user-to-locals-and-req'));
 
 // Landing page route (#2)
 app.get('/', (req, res) => {
-  res.render('home.ejs', { title: 'Home Page' });
+  res.render('home.ejs', { title: 'Welcome to MovieMate' });
 });
 
 // Movies controller (#4)
-app.use('/movies', require('./controllers/movie'));
+app.use('/movies', require('./controllers/movies'));
 
 // Authentication routes
 app.use('/auth', require('./controllers/auth'));

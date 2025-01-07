@@ -42,4 +42,29 @@ router.delete("/:id", ensureSignedIn, async (req, res) => {
   }
 });
 
+// GET /movies/:id/edit (Render the edit form)
+router.get("/:id/edit", ensureSignedIn, async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
+    res.render("movies/edit.ejs", { title: "Edit Movie", movie });
+  } catch (err) {
+    console.error(err);
+    res.redirect("/movies");
+  }
+});
+
+// PUT /movies/:id (Update movie details)
+router.put("/:id", ensureSignedIn, async (req, res) => {
+  try {
+    await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    res.redirect("/movies");
+  } catch (err) {
+    console.error(err);
+    res.redirect("/movies");
+  }
+});
+
+
+
+
 module.exports = router;
