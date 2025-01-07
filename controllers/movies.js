@@ -56,7 +56,8 @@ router.get("/:id/edit", ensureSignedIn, async (req, res) => {
 // PUT /movies/:id (Update movie details)
 router.put("/:id", ensureSignedIn, async (req, res) => {
   try {
-    await Movie.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    req.body.watched = !!req.body.watched;
+    await Movie.findByIdAndUpdate(req.params.id, req.body);
     res.redirect("/movies");
   } catch (err) {
     console.error(err);
