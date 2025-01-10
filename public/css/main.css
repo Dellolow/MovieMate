@@ -101,7 +101,7 @@ select:focus {
 form button[type="submit"] {
   grid-column: span 2;
   background-color: #e50914;
-  background-position-y
+  /* background-position-y */
   color: #ffffff;
   font-weight: bold;
   border: none;
