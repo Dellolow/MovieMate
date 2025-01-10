@@ -2,18 +2,13 @@
 ## Description
 **MovieMate** is a dynamic CRUD application designed to help movie enthusiasts organize their movie-watching experience. With MovieMate, users can create, view, update, and delete entries from their personalized movie watchlist. This app allows users to track movies they've seen, plan future viewings, and manage their collections efficiently. Its user-friendly interface ensures a seamless experience while maintaining a stylish and modern design.
 ![wireframe] (imgs/wireframe.png)
+![screenshot] (imgs/screen-shot.png)
+
+## Getting Started
+Experience MovieMate: [MovieMate] (https://my-movie-mate-faaeb4004eff.herokuapp.com/)
 
 
-## MVP Objectives
-* As a user, I want to add movies to my watchlist, complete with titles, genres, and descriptions.
-* As a user, I want to view my entire movie watchlist displayed in an organized manner.
-* As a user, I want the ability to update details for any movie in my watchlist.
-* As a user, I want to delete movies I no longer need from my watchlist.
-* As a user, I want the app to confirm significant actions like deleting or updating movies.
-Additional Objectives
-* As a user, I want a responsive design that works well across devices.
-* As a user, I want the app to be visually appealing with animations and clean layouts.
-* As a developer, I want the interface to dynamically update so users see changes immediately without refreshing the page.
+
 ## Technologies Used
 * **HTML** for structuring the web application.
 * **CSS** for styling and responsive design.
@@ -21,7 +16,26 @@ Additional Objectives
 * **MongoDB** for database storage of movie data.
 
 ## Getting Started
-Experience MovieMate: MovieMate
 
-## Approach Taken
-To develop **MovieMate**, I began by breaking down the application's core functionalities into manageable components aligned with CRUD principles. User stories guided the development process, ensuring the app's features met user needs effectively. After completing the MVP objectives, I enhanced the app with additional styling, responsive design, and dynamic functionality to improve the overall user experience.
+## Next Steps
+
+* Style the Edit Button: Improve the visual styling of the "Edit" button to make it consistent with the overall design of the app and visually distinct.
+
+* Enhance Movie Info Layout: Reorganize the movie information within each card to improve readability and visual appeal. For example, use distinct sections for the title, year, genre, and description.
+
+* Search Functionality: Add a search bar to allow users to quickly locate movies in their watchlist.
+
+* Filter Options: Enable users to filter movies by genre, release year, or watched/unwatched status.
+
+* Sorting Feature: Allow users to sort their movie lists alphabetically, by release year, or by genre.
+
+* User Authentication: Implement user accounts to allow multiple users to maintain their personalized watchlists.
+
+* Mobile Optimization: Enhance the app's mobile responsiveness to ensure a seamless experience on smaller devices.
+
+* Add Movie Ratings: Allow users to rate and review their watched movies.
+
+* Movie Recommendations: Use APIs to suggest movies based on the user's watchlist or preferences.
+
+* Dark Mode Toggle: Add a dark mode option to improve usability in low-light environments.
+
