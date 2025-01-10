@@ -1,8 +1,11 @@
 # MovieMate
+
 ## Description
 **MovieMate** is a dynamic CRUD application designed to help movie enthusiasts organize their movie-watching experience. With MovieMate, users can create, view, update, and delete entries from their personalized movie watchlist. This app allows users to track movies they've seen, plan future viewings, and manage their collections efficiently. Its user-friendly interface ensures a seamless experience while maintaining a stylish and modern design.
-![wireframe] (imgs/wireframe.png)
-![screenshot] (imgs/screen-shot.png)
+
+![screenshot](imgs/screen-shot.png) 
+
+
 
 ## Getting Started
 Experience MovieMate: [MovieMate] (https://my-movie-mate-faaeb4004eff.herokuapp.com/)
